@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8" />
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+		integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>Entrega de trabalho</title>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Pronto para entregar seu trabalho?</h1>
+		<%if (errorMsg){%>
+			<div class="alert alert-danger" role="alert">
+				<%=errorMsg%>
+			</div>
+		<%}%>
+
+		<%if (successMsg){%>
+			<div class="alert alert-success" role="alert">
+				<%=successMsg%>
+			</div>
+		<%}%>
+
+		<form ref='uploadForm'  id='uploadForm' action="/deliveryWork" method="post" encType="multipart/form-data">
+			<div class="form-group">
+				<div class="md-form">
+					<textarea name="token" id="token" class="md-textarea form-control" rows="3" required><%=token%></textarea>
+					<label for="form7">Informe seu token: O token de entrega é uma chave que seu orientador lhe passa
+						para
+						entregar o trabalho</label>
+				</div>
+
+				<div class="custom-file">
+					<input name="fileInput" type="file" class="custom-file-input" id="fileInput" required>
+					<label class="custom-file-label" for="validatedCustomFile">Selecione o arquivo...</label>
+					<div class="invalid-feedback">Example invalid custom file feedback</div>
+				</div>
+			</div>
+			<div>
+				<button type="submit" class="btn btn-primary btn-lg waves-effect">Submeter entrega</button>
+			</div>
+
+		</form>
+	</div>
+	<script>
+		$('#fileInput').on('change', function () {
+			//get the file name
+			var fileName = $(this).val();
+			//replace the "Choose a file" label
+			$(this).next('.custom-file-label').html(fileName);
+		})
+	</script>
+</body>
+
+</html>

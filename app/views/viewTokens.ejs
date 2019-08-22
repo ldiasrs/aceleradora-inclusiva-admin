@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>Nova entrega de trabalho</title>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Tokens Ativos</h1>
+
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th scope="col">Criado em</th>
+					<th scope="col">Projeto</th>
+					<th scope="col">Estudante</th>
+					<th scope="col">Token</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%for ( var i = 0; i < tokens.length; i++ ){%>
+				<tr>
+					<th scope="row"><%=tokens[i].createdDate%></th>
+					<td><%=tokens[i].projectName%></td>
+					<td><%=tokens[i].studantName%></td>
+					<td><%=tokens[i].token%> </td>
+				</tr>
+				<%}%>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>

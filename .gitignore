@@ -1,0 +1,6 @@
+data-works/
+node_modules/
+data-works/
+package-lock.json
+db/
+app/db/

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>Nova entrega de trabalho</title>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Nova entrega de trabalho</h1>
+		<div class="card" style="width: 700px">
+			<div class="card-body">
+				<p>Para gerar uma nova entrega de trabalho siga os passos:</p>
+				<ul>
+					<li><b>1) Defina os estudantes</b></li>
+					<li><b>2) Escolha um Projeto</b></li>
+					<li><b>3) Clicle no botão gerar entrega</b></li>
+					<ul>
+						<li><i>Será gerado uma entrega de trabalho para cada aluno selecionado.</i></li>
+						<li><i>O sistema já identifica a turma e alunos correntes.</i></li>
+					</ul>
+				</ul>
+				</ul>
+			</div>
+		</div>
+		<form action="/generateToken" method="POST">
+
+			<div class="form-group" style="width: 700px">
+				<h2>Estudantes (<%=className%>)</h2>
+				<select name="studants" multiple class="form-control">
+					<%for ( var i = 0; i < studants.length; i++ ){%>
+					<option value="<%=studants[i].id%>"> <%=studants[i].studantName%> </option> 
+					<%}%>
+				</select>
+				<p>***Dica: Segure shift para selecionar multiplos ou clicle e arraste</p>
+			</div>
+
+			<div class="form-group"  style="width: 700px">
+				<h2>Projeto</h2>
+				<select name="project" id="Projects" class="form-control" >
+					<%for ( var i = 0; i < projects.length; i++ ){%>
+					<option value="<%=projects[i].id%>" > <%=projects[i].projectName%> </option>
+					<%}%>
+				</select>
+			</div>
+		
+			<div>
+				<button type="submit" class="btn btn-primary btn-lg waves-effect">Gerar entrega</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
