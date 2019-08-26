@@ -3,16 +3,30 @@
 
 <head>
 	<meta charset="utf-8" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<title>Nova entrega de trabalho</title>
 </head>
+<script>
+	function submit(val) {
+		let arr = [];
+		val.parentNode.parentNode.querySelectorAll('td').forEach(item => {
+			if (item.getAttribute('class') != "text-center") {
+				arr.push(item.innerHTML)
+			}
+		}, this)
+		console.log(arr[2]);
+		window.location.href = `http://localhost:3000/deliveryWork?token=${arr[2].trim()}`;
+	}
+</script>
 
 <body>
 	<div class="container">
 		<h1>Tokens Ativos</h1>
 
-		<table class="table table-bordered">
+		<table name="table" class="table table-bordered">
 			<thead>
 				<tr>
 					<th scope="col">Criado em</th>
@@ -22,17 +36,29 @@
 				</tr>
 			</thead>
 			<tbody>
+				<!-- <form ref='uploadForm' id='uploadForm' action="/deliveryWorkByView" method="post"
+					encType="multipart/form-data"> -->
+
 				<%for ( var i = 0; i < tokens.length; i++ ){%>
 				<tr>
 					<th scope="row"><%=tokens[i].createdDate%></th>
 					<td><%=tokens[i].projectName%></td>
 					<td><%=tokens[i].studantName%></td>
-					<td><%=tokens[i].token%> </td>
+					<td  style="display:none;" ><%=tokens[i].token%> </td>
+					<%if(filterId){%>
+					<td>
+						<input class="btn btn-primary" type="button" value="Input" onclick="submit(this)">
+						<!-- <button id="deliveryButton" name="deliveryButton" type="submit" class="btn btn-primary btn-lg waves-effect">Submeter entrega</button> -->
+					</td>
+					<%}%>
+					
 				</tr>
 				<%}%>
+					<!-- </form> -->
 			</tbody>
 		</table>
 	</div>
+
 </body>
 
 </html>

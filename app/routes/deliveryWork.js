@@ -4,7 +4,7 @@ module.exports = function (app) {
     repository = new Repository();
 
     app.get('/deliveryWork', function (req, res) {
-        res.render('deliveryWork', { errorMsg: null, successMsg: null, token: '' });
+        res.render('deliveryWork', { errorMsg: null, successMsg: null, token: req.query.token });
     });
 
     app.post('/deliveryWork', function (req, res) {
