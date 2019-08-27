@@ -13,6 +13,7 @@ module.exports = function (app) {
         repository.tokenExist(req.body.token, function (err, tokenExist) {
             if (tokenExist) {
                 repository.findStandentAndProjectNameByToken(req.body.token,function(err, row){
+                    repository.markTokenAsDelivered(req.body.token);
                     commitProject(req.body.token, row.studantName, row.className, row.projectName, req.files.fileInput)
                     res.render('deliveryWork', {successMsg: `Olá ${row.studantName}, seu trabalho '${row.projectName}' foi entregue com sucesso :)`, errorMsg: null, token: ''});
                 });

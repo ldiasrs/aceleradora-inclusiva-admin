@@ -64,6 +64,13 @@ module.exports = class Repository {
         });
     }
 
+    markTokenAsDelivered(token) {
+        let sql = "INSERT INTO DeliveriedProject(createdDate,token) VALUES(datetime('now'),?)"
+        var stmt = DB.prepare(sql);
+        stmt.run([token]);
+        stmt.finalize();
+    }
+
     tokenExist(token, callback) {
         let sql = "SELECT count(*) as count FROM ProjectDeliveryToken WHERE token=?"
 
@@ -84,7 +91,7 @@ module.exports = class Repository {
             + "               ON st.id = token.studentid "
             + "       INNER JOIN project pj "
             + "               ON pj.id = token.projectid "
-              + "       INNER JOIN ClassInfo cls "
+            + "       INNER JOIN ClassInfo cls "
             + "               ON cls.id = st.classId "
             + "WHERE  token.token = ?";
 
@@ -105,12 +112,12 @@ module.exports = class Repository {
             + "INNER JOIN Student st ON st.id = token.studentId "
             + "INNER JOIN Project pj ON pj.id = token.projectId "
             + "@STUDANT_FILTER"
-            + "LEFT JOIN DeliveriedProject delivery ON token.id = delivery.deliveryTokenId "
-            + "WHERE delivery.deliveryTokenId IS NULL "
+            + "LEFT JOIN DeliveriedProject delivery ON token.token = delivery.token "
+            + "WHERE delivery.token IS NULL "
             + "ORDER by token.createdDate desc"
 
-        var sql = baseSql.replace("@STUDANT_FILTER", studantId? "AND st.id = ? " : "")
-    
+        var sql = baseSql.replace("@STUDANT_FILTER", studantId ? "AND st.id = ? " : "")
+
         DB.all(sql, studantId, (err, rows) => {
             if (err) {
                 console.log(err)

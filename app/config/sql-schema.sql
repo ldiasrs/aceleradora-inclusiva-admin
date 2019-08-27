@@ -43,9 +43,8 @@ CREATE TABLE IF NOT EXISTS ProjectDeliveryToken (
 
 CREATE TABLE IF NOT EXISTS DeliveriedProject (
    id integer NOT NULL PRIMARY KEY,
-   deliveryTokenId integer,
-   zipFile BLOB,
-   FOREIGN KEY (deliveryTokenId) REFERENCES ProjectDeliveryToken(id)
+   createdDate date,
+   token integer
 );
 
 INSERT OR REPLACE INTO Student(studantName, admissionDate, classId) 
