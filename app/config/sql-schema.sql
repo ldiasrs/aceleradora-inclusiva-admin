@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS ClassInfo (
 );
 
 INSERT OR REPLACE INTO ClassInfo(className,current,createdDate) 
-   VALUES('Turma 4',1, datetime('now'));
+   VALUES('t04',1, datetime('now'));
 
 
 CREATE TABLE IF NOT EXISTS Project (
@@ -50,6 +50,6 @@ CREATE TABLE IF NOT EXISTS DeliveriedProject (
 INSERT OR REPLACE INTO Student(studantName, admissionDate, classId) 
    VALUES('Leo', datetime('now'), (SELECT MAX(id) FROM ClassInfo));
 INSERT OR REPLACE INTO Student(studantName, admissionDate, classId) 
-   VALUES('Caio', datetime('now'), (SELECT MAX(id) FROM ClassInfo));
+   VALUES('Fernando', datetime('now'), (SELECT MAX(id) FROM ClassInfo));
 
 COMMIT;

@@ -4,3 +4,4 @@ data-works/
 package-lock.json
 db/
 app/db/
+scripts/connect-server.sh
