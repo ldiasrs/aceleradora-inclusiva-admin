@@ -1,7 +1,19 @@
-const ProjectDeliveryToken = require("./ProjectDeliveryToken")
 const DB = require("../config/dbConnection")
 
 module.exports = class Repository {
+
+
+    saveTokens (tokens, callback) {
+        let sql = "INSERT INTO ProjectDeliveryToken(studentId,projectId,createdDate,token) VALUES(?,?,?,?)"
+        DB.serialize(function () {
+            var stmt = DB.prepare(sql);
+            tokens.forEach(function (token) {
+                stmt.run([token.studentId, token.projectId, token.createdDate, token.token]);
+            });
+            stmt.finalize();
+            callback()
+        });
+    }
 
     findCurrentClass(callback) {
         let sql = "SELECT * FROM ClassInfo WHERE current=1"
@@ -32,17 +44,6 @@ module.exports = class Repository {
         });
     }
 
-    saveProjectDeliveryToken(tokens, callback) {
-        let sql = "INSERT INTO ProjectDeliveryToken(studentId,projectId,createdDate,token) VALUES(?,?,datetime('now'),?)"
-        DB.serialize(function () {
-            var stmt = DB.prepare(sql);
-            tokens.forEach(function (token) {
-                stmt.run([token.studentId, token.projectId, token.token]);
-            });
-            stmt.finalize();
-            callback()
-        });
-    }
 
     markTokenAsDelivered(token) {
         let sql = "INSERT INTO DeliveriedProject(createdDate,token) VALUES(datetime('now'),?)"
