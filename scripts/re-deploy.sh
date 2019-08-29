@@ -1,4 +1,4 @@
 #!/bin/sh
 killall node
 git pull
-node index.js >> omework-delivery.log &
+node index.js >> homework-delivery.log &
