@@ -34,6 +34,7 @@ generateAndSaveTokens = function(studantIds, projectId, callback) {
 }
 
 getTokenConfig = function(callback) {
+    repository = new Repository()
     repository.findCurrentClass(function (erro, currentClass) {
         repository.findAllActiveProjects(function (errorSts, projects) {
             repository.findAllStudandsOfClass(currentClass.id, function (stError, studants) {

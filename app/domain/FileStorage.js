@@ -2,7 +2,15 @@ var fs = require('fs');
 
 const dataWorkDir = 'data-works';
 
-module.exports = function commitProject(token, studantName, className, projectName, file) {
+
+function createIfNotExist(dir) {
+    if (!fs.existsSync(dir)) {
+        console.log(`FileUploader - Creating folder: ${dir}`)
+        fs.mkdirSync(dir);
+    }
+}
+
+storeFile = function (token, studantName, className, projectName, file) {
 
     var classDir = `${dataWorkDir}/${className}`
     var projectDir = `${classDir}/${projectName}`
@@ -22,10 +30,4 @@ module.exports = function commitProject(token, studantName, className, projectNa
     });
 };
 
-function createIfNotExist(dir) {
-    if (!fs.existsSync(dir)) {
-        console.log(`FileUploader - Creating folder: ${dir}`)
-        fs.mkdirSync(dir);
-    }
-}
-
+module.exports = {storeFile}
