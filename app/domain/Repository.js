@@ -59,7 +59,6 @@ module.exports = class Repository {
                 stmt.run([token.studentId, token.projectId, token.token]);
             });
             stmt.finalize();
-            console.log("DeliveryToken finalize")
             callback()
         });
     }

@@ -11,7 +11,7 @@ module.exports = class ProjectDeliveryToken {
     }
     
     generateToken() {
-        var key =  `studentId:${this.studentId} projectId:${this.projectId} createdDate:${this.createdDate}`
+        var key =  `studentId:${this.studentId},projectId:${this.projectId}`
         this.token = AES.encrypt(key, '#this-password-must-be-on-env').toString()
     }
 
@@ -31,8 +31,6 @@ module.exports = class ProjectDeliveryToken {
         } else {
             list.push(new ProjectDeliveryToken(studantIds, projectId))
         }
-        //FIXME remove this line
-        list.forEach(function (token) { console.log("Decript: " + ProjectDeliveryToken.decryptToken(token.token)) })
         return list;
     }
 }

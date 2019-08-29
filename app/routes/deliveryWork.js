@@ -4,7 +4,8 @@ module.exports = function (app) {
     repository = new Repository();
 
     app.get('/deliveryWork', function (req, res) {
-        res.render('deliveryWork', { errorMsg: null, successMsg: null, token: req.query.token });
+        tokenNormalized = (req.query.token !== undefined) ? req.query.token.replace(/ /g,"+") : ""
+        res.render('deliveryWork', { errorMsg: null, successMsg: null, token: tokenNormalized });
     });
 
     app.post('/deliveryWork', function (req, res) {

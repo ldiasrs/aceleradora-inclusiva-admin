@@ -8,12 +8,12 @@
 		crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<title>Entrega de trabalho</title>
+	<title>Entrega de trabalho por Token</title>
 </head>
 
 <body>
 	<div class="container">
-		<h1>Pronto para entregar seu trabalho?</h1>
+		<h1>Vamos entregar esse trabalho?</h1>
 		<%if (errorMsg){%>
 			<div class="alert alert-danger" role="alert">
 				<%=errorMsg%>
@@ -30,21 +30,18 @@
 			<div class="form-group">
 				<div class="md-form">
 					<textarea name="token" id="token" class="md-textarea form-control" rows="3" required><%=token%></textarea>
-					<label for="form7">Informe seu token: O token de entrega é uma chave que seu orientador lhe passa
-						para
-						entregar o trabalho</label>
+					<label for="form7">Informe o token: O token de entrega é uma chave que sua orientadora lhe passapar entregar o trabalho de seu projeto</label>
 				</div>
 
 				<div class="custom-file">
 					<input name="fileInput" type="file" class="custom-file-input" id="fileInput" required>
 					<label class="custom-file-label" for="validatedCustomFile">Selecione o arquivo...</label>
-					<div class="invalid-feedback">Example invalid custom file feedback</div>
+					<div class="invalid-feedback">Arquivo inválido</div>
 				</div>
 			</div>
 			<div>
 				<button type="submit" class="btn btn-primary btn-lg waves-effect">Submeter entrega</button>
 			</div>
-
 		</form>
 	</div>
 	<script>
