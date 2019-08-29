@@ -6,4 +6,6 @@ Delivery homework of a class students using simple tokens shares
 
 - Security View tokens - should not access by any one
 
-- 
+- Use a better logger
+
+- Create the unit tests

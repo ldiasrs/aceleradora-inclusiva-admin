@@ -21,8 +21,6 @@ module.exports = class ProjectDeliveryToken {
     }
 
     static generateProjectDeliveries(studantIds, projectId) {
-        //TODO validate input
-        //TODO test?
         var list = [];
         if (Array.isArray(studantIds)) {
             studantIds.forEach(function (studantId) {

@@ -3,23 +3,6 @@ const DB = require("../config/dbConnection")
 
 module.exports = class Repository {
 
-    generateProjectDeliveries(studantIds, projectIds) {
-        //TODO validate input
-        //TODO test?
-        var list = [];
-        if (Array.isArray(studantIds)) {
-            studantIds.forEach(function (studantIds) {
-                list.push(new ProjectDeliveryToken(studantIds, projectIds))
-            });
-        } else {
-            list.push(new ProjectDeliveryToken(studantIds, projectIds))
-        }
-        //FIXME remove this line
-        list.forEach(function (token) { console.log(token.decryptToken()) })
-        //TODO save the list
-        return list;
-    }
-
     findCurrentClass(callback) {
         let sql = "SELECT * FROM ClassInfo WHERE current=1"
         DB.get(sql, (err, row) => {
@@ -31,7 +14,7 @@ module.exports = class Repository {
         let sql = "SELECT * FROM Project WHERE active=1"
         DB.all(sql, (err, rows) => {
             if (err) {
-                console.log(err)
+                console.log(`Error findAllActiveProjects, ERROR: ${err}`)
                 return
             }
             callback(err, rows)
@@ -42,7 +25,7 @@ module.exports = class Repository {
         let sql = "SELECT * FROM Student WHERE classId=?"
         DB.all(sql, [classId], (err, rows) => {
             if (err) {
-                console.log(err)
+                console.log(`Error findAllStudandsOfClass, ERROR: ${err}`)
                 return
             }
             callback(err, rows)
@@ -50,12 +33,10 @@ module.exports = class Repository {
     }
 
     saveProjectDeliveryToken(tokens, callback) {
-        console.log("saveProjectDeliveryToken")
         let sql = "INSERT INTO ProjectDeliveryToken(studentId,projectId,createdDate,token) VALUES(?,?,datetime('now'),?)"
         DB.serialize(function () {
             var stmt = DB.prepare(sql);
             tokens.forEach(function (token) {
-                console.log("DeliveryToken Inserting:" + token.studentId)
                 stmt.run([token.studentId, token.projectId, token.token]);
             });
             stmt.finalize();
@@ -72,9 +53,7 @@ module.exports = class Repository {
 
     tokenExist(token, callback) {
         let sql = "SELECT count(*) as count FROM ProjectDeliveryToken WHERE token=?"
-
         DB.get(sql, [token.trim()], (err, row) => {
-            console.log(row.count)
             callback(err, (row.count > 0))
         });
     }
@@ -119,7 +98,7 @@ module.exports = class Repository {
 
         DB.all(sql, studantId, (err, rows) => {
             if (err) {
-                console.log(err)
+                console.log(`Error findAllActiveTokens, ERROR: ${err}`)
                 return
             }
             callback(err, rows)
