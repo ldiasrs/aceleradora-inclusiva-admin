@@ -13,13 +13,15 @@
 <body>
 	<div class="container">
 		<h1>Tokens Ativos</h1>
-
+	<form ref='uploadForm'  id='uploadForm' method="get" encType="multipart/form-data">
+	
 		<table name="table" class="table table-bordered">
 			<thead>
 				<tr>
 					<th scope="col">Projeto</th>
 					<th scope="col">Estudante</th>
 					<th scope="col">Token</th>
+					<th scope="col">Acão</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -27,12 +29,14 @@
 				<tr>
 					<td><%=tokens[i].projectName%></td>
 					<td><%=tokens[i].studantName%></td>
-					<td ><%=tokens[i].token%>  -  <a href="http://localhost:3000/deliveryWork?token=<%=tokens[i].token%>">Entregar</href></td>
+					<td ><%=tokens[i].token%></td>
+					<td> <a href="/deliveryWork?token=<%=tokens[i].token%>">Entregar</a></td>
 				</tr>
 				<%}%>
 				
 			</tbody>
 		</table>
+	</form>
 	</div>
 
 </body>
