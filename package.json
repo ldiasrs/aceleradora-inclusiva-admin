@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Leonardo Cardoso Dias",
   "license": "ISC",
@@ -18,5 +18,9 @@
     "jquery": "^3.4.1",
     "nodemon": "^1.19.1",
     "sqlite3": "^4.0.9"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
   }
 }
+

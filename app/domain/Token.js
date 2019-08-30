@@ -1,4 +1,4 @@
-const Repository = require("./Repository")
+
 const AES = require("crypto-js/aes");
 
 class Token {
@@ -34,6 +34,7 @@ generateAndSaveTokens = function(studantIds, projectId, callback) {
 }
 
 getTokenConfig = function(callback) {
+    const Repository = require("./Repository")
     repository = new Repository()
     repository.findCurrentClass(function (erro, currentClass) {
         repository.findAllActiveProjects(function (errorSts, projects) {
@@ -48,4 +49,4 @@ getTokenConfig = function(callback) {
     });
 }
 
-module.exports = {generateAndSaveTokens, getTokenConfig}
+module.exports = {generateAndSaveTokens, getTokenConfig,generateTokens}
