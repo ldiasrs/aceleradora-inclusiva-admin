@@ -3,9 +3,8 @@ const Repository = require("../domain/Repository")
 
 module.exports = function (app) {
     app.get('/viewTokens', function (req, res) {
-        var repository = new Repository();
          console.log(`/viewTokens - Accessing with id:${req.query.id}`)
-        repository.findAllActiveTokens(req.query.id, function (err, tokens) {
+        Repository.findAllActiveTokens(req.query.id, function (err, tokens) {
             res.render('viewTokens', { tokens: tokens , filterId: req.query.id});
         });
     });

@@ -29,16 +29,16 @@ function generateTokens (studantIds, projectId) {
 }
 
 generateAndSaveTokens = function(studantIds, projectId, callback) {
+    let Repository = require("./Repository")
     tokens  = generateTokens(studantIds, projectId);
-    new Repository().saveTokens(tokens, callback);
+    Repository.saveTokens(tokens, callback);
 }
 
 getTokenConfig = function(callback) {
     const Repository = require("./Repository")
-    repository = new Repository()
-    repository.findCurrentClass(function (erro, currentClass) {
-        repository.findAllActiveProjects(function (errorSts, projects) {
-            repository.findAllStudandsOfClass(currentClass.id, function (stError, studants) {
+    Repository.findCurrentClass(function (erro, currentClass) {
+        Repository.findAllActiveProjects(function (errorSts, projects) {
+            Repository.findAllStudandsOfClass(currentClass.id, function (stError, studants) {
                 callback({
                     projects: projects,
                     studants: studants,

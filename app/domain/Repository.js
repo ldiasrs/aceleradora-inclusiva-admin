@@ -1,9 +1,6 @@
 const DB = require("../config/dbConnection")
-
-module.exports = class Repository {
-
-
-    saveTokens (tokens, callback) {
+module.exports = {
+    saveTokens : function (tokens, callback) {
         let sql = "INSERT INTO ProjectDeliveryToken(studentId,projectId,createdDate,token) VALUES(?,?,?,?)"
         DB.serialize(function () {
             var stmt = DB.prepare(sql);
@@ -13,16 +10,16 @@ module.exports = class Repository {
             stmt.finalize();
             callback()
         });
-    }
+    },
 
-    findCurrentClass(callback) {
+    findCurrentClass : function (callback) {
         let sql = "SELECT * FROM ClassInfo WHERE current=1"
         DB.get(sql, (err, row) => {
             callback(err, row)
         });
-    }
+    },
 
-    findAllActiveProjects(callback) {
+    findAllActiveProjects : function (callback) {
         let sql = "SELECT * FROM Project WHERE active=1"
         DB.all(sql, (err, rows) => {
             if (err) {
@@ -31,9 +28,9 @@ module.exports = class Repository {
             }
             callback(err, rows)
         });
-    }
+    },
 
-    findAllStudandsOfClass(classId, callback) {
+    findAllStudandsOfClass : function (classId, callback) {
         let sql = "SELECT * FROM Student WHERE classId=?"
         DB.all(sql, [classId], (err, rows) => {
             if (err) {
@@ -42,24 +39,24 @@ module.exports = class Repository {
             }
             callback(err, rows)
         });
-    }
+    },
 
 
-    markTokenAsDelivered(token) {
+    markTokenAsDelivered : function (token) {
         let sql = "INSERT INTO DeliveriedProject(createdDate,token) VALUES(datetime('now'),?)"
         var stmt = DB.prepare(sql);
         stmt.run([token]);
         stmt.finalize();
-    }
+    },
 
-    tokenExist(token, callback) {
+    tokenExist : function (token, callback) {
         let sql = "SELECT count(*) as count FROM ProjectDeliveryToken WHERE token=?"
         DB.get(sql, [token.trim()], (err, row) => {
             callback(err, (row.count > 0))
         });
-    }
+    },
 
-    findStandentAndProjectNameByToken(token, callback) {
+    findStandentAndProjectNameByToken : function (token, callback) {
         var sql = ""
             + "SELECT "
             + "       st.studantName AS studantName, "
@@ -77,9 +74,9 @@ module.exports = class Repository {
         DB.get(sql, [token.trim()], (err, row) => {
             callback(err, row)
         });
-    }
+    },
 
-    findAllActiveTokens(studantId, callback) {
+    findAllActiveTokens : function (studantId, callback) {
 
         let baseSql = ""
             + "SELECT token.id AS id, "
@@ -104,5 +101,5 @@ module.exports = class Repository {
             }
             callback(err, rows)
         });
-    }
+    },
 }
