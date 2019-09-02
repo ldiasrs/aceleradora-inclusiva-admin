@@ -16,21 +16,21 @@ class Token {
     }
 }
 
-function generateTokens (studantIds, projectId) {
+function generateTokens (studentIds, projectId) {
     var list = [];
-    if (Array.isArray(studantIds)) {
-        studantIds.forEach(function (studantId) {
-            list.push(new Token(studantId, projectId))
+    if (Array.isArray(studentIds)) {
+        studentIds.forEach(function (studentId) {
+            list.push(new Token(studentId, projectId))
         });
     } else {
-        list.push(new Token(studantIds, projectId))
+        list.push(new Token(studentIds, projectId))
     }
     return list;
 }
 
-generateAndSaveTokens = function(studantIds, projectId, callback) {
+generateAndSaveTokens = function(studentIds, projectId, callback) {
     let Repository = require("./Repository")
-    tokens  = generateTokens(studantIds, projectId);
+    tokens  = generateTokens(studentIds, projectId);
     Repository.saveTokens(tokens, callback);
 }
 
@@ -38,10 +38,10 @@ getTokenConfig = function(callback) {
     const Repository = require("./Repository")
     Repository.findCurrentClass(function (erro, currentClass) {
         Repository.findAllActiveProjects(function (errorSts, projects) {
-            Repository.findAllStudandsOfClass(currentClass.id, function (stError, studants) {
+            Repository.findAllStudandsOfClass(currentClass.id, function (stError, students) {
                 callback({
                     projects: projects,
-                    studants: studants,
+                    students: students,
                     className: currentClass.className 
                 })
             });

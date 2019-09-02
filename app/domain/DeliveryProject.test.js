@@ -9,14 +9,14 @@ describe('Delivery project', () => {
     it('returns the correct data', () => {
         jest.mock('./Repository', () => ({
             tokenExist: (token, callback) => { callback(null, true) },
-            findStandentAndProjectNameByToken: (token, callback) => { callback(null, { studantName: "Leo", className: "t04", projectName: "Token" }) },
+            findStandentAndProjectNameByToken: (token, callback) => { callback(null, { studentName: "Leo", className: "t04", projectName: "Token" }) },
             markTokenAsDelivered: jest.fn(),
         }));
 
         let DeliveryProject = require('./DeliveryProject');
 
         DeliveryProject.deliveryProject(token, null, function (row) {
-            expect(row).toStrictEqual({ tokenExist: true, studantName: "Leo", projectName: "Token" });
+            expect(row).toStrictEqual({ tokenExist: true, studentName: "Leo", projectName: "Token" });
         });
     });
     it('call the mark token as delivered', () => {

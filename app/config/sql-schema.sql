@@ -27,7 +27,7 @@ INSERT OR REPLACE INTO Project(projectName,active)
 
 CREATE TABLE IF NOT EXISTS Student (
    id integer NOT NULL PRIMARY KEY,
-   studantName text,
+   studentName text,
    admissionDate date,
    classId integer,
    FOREIGN KEY (classId) REFERENCES ClassInfo(id)
@@ -47,9 +47,9 @@ CREATE TABLE IF NOT EXISTS DeliveriedProject (
    token integer
 );
 
-INSERT OR REPLACE INTO Student(studantName, admissionDate, classId) 
+INSERT OR REPLACE INTO Student(studentName, admissionDate, classId) 
    VALUES('Leo', datetime('now'), (SELECT MAX(id) FROM ClassInfo));
-INSERT OR REPLACE INTO Student(studantName, admissionDate, classId) 
+INSERT OR REPLACE INTO Student(studentName, admissionDate, classId) 
    VALUES('Fernando', datetime('now'), (SELECT MAX(id) FROM ClassInfo));
 
 COMMIT;

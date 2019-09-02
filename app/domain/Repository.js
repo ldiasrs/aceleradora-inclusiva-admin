@@ -59,7 +59,7 @@ module.exports = {
     findStandentAndProjectNameByToken : function (token, callback) {
         var sql = ""
             + "SELECT "
-            + "       st.studantName AS studantName, "
+            + "       st.studentName AS studentName, "
             + "       pj.projectName AS projectName, "
             + "       cls.className AS className "
             + "FROM   ProjectDeliveryToken token "
@@ -76,25 +76,25 @@ module.exports = {
         });
     },
 
-    findAllActiveTokens : function (studantId, callback) {
+    findAllActiveTokens : function (studentId, callback) {
 
         let baseSql = ""
             + "SELECT token.id AS id, "
             + "       strftime('%d-%m-%Y %H:%M:%S',token.createdDate) AS createdDate, "
             + "       token.token AS token, "
-            + "       st.studantName AS studantName, "
+            + "       st.studentName AS studentName, "
             + "       pj.projectName AS projectName "
             + "FROM ProjectDeliveryToken token "
             + "INNER JOIN Student st ON st.id = token.studentId "
             + "INNER JOIN Project pj ON pj.id = token.projectId "
-            + "@STUDANT_FILTER"
+            + "@student_FILTER"
             + "LEFT JOIN DeliveriedProject delivery ON token.token = delivery.token "
             + "WHERE delivery.token IS NULL "
             + "ORDER by token.createdDate desc"
 
-        var sql = baseSql.replace("@STUDANT_FILTER", studantId ? "AND st.id = ? " : "")
+        var sql = baseSql.replace("@student_FILTER", studentId ? "AND st.id = ? " : "")
 
-        DB.all(sql, studantId, (err, rows) => {
+        DB.all(sql, studentId, (err, rows) => {
             if (err) {
                 console.log(`Error findAllActiveTokens, ERROR: ${err}`)
                 return

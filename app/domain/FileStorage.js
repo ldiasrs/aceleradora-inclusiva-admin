@@ -10,21 +10,21 @@ function createIfNotExist(dir) {
     }
 }
 
-storeFile = function (token, studantName, className, projectName, file) {
+storeFile = function (token, studentName, className, projectName, file) {
 
     var classDir = `${dataWorkDir}/${className}`
     var projectDir = `${classDir}/${projectName}`
-    var studantDir = `${projectDir}/${studantName}`
+    var studentDir = `${projectDir}/${studentName}`
     
     createIfNotExist(dataWorkDir);
     createIfNotExist(classDir);
     createIfNotExist(projectDir);
-    createIfNotExist(studantDir);
+    createIfNotExist(studentDir);
 
-    console.log(`FileUploader - Moving file  ${file.name} to dir ${studantDir}.`)
-    file.mv(`${studantDir}/${file.name}`, function (err) {
+    console.log(`FileUploader - Moving file  ${file.name} to dir ${studentDir}.`)
+    file.mv(`${studentDir}/${file.name}`, function (err) {
         if (err) {
-            console.log(`FileUploader - Error moving file ${file.name} to dir ${studantDir}. Error: ${err}`)
+            console.log(`FileUploader - Error moving file ${file.name} to dir ${studentDir}. Error: ${err}`)
             return res.status(500).send(err);;
         }
     });

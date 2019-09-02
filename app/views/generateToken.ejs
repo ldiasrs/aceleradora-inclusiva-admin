@@ -15,7 +15,7 @@
 			<div class="card-body">
 				<p>Para gerar os tokens de entrega de trabalhos siga os passos:</p>
 				<ul>
-					<li><b>1) Escolha os estudantes</b></li>
+					<li><b>1) Escolha os estudentes</b></li>
 					<li><b>2) Escolha um Projeto</b></li>
 					<li><b>3) Clicle no botão gerar entrega</b></li>
 					<ul>
@@ -29,10 +29,10 @@
 		<form action="/generateToken" method="POST">
 
 			<div class="form-group" style="width: 700px">
-				<h2>Estudantes (<%=className%>)</h2>
-				<select name="studants" multiple class="form-control">
-					<%for ( var i = 0; i < studants.length; i++ ){%>
-					<option value="<%=studants[i].id%>"> <%=studants[i].studantName%> </option> 
+				<h2>Estudentes (<%=className%>)</h2>
+				<select name="students" multiple class="form-control">
+					<%for ( var i = 0; i < students.length; i++ ){%>
+					<option value="<%=students[i].id%>"> <%=students[i].studentName%> </option> 
 					<%}%>
 				</select>
 				<p>***Dica: Segure shift para selecionar multiplos ou clicle e arraste</p>
