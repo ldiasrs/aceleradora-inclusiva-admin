@@ -6,3 +6,4 @@ db/
 app/db/
 scripts/connect-server.sh
 homework-delivery.log
+app/config/insert-students.sql
