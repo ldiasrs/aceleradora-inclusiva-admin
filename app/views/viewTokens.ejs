@@ -20,7 +20,7 @@
 				<tr>
 					<th scope="col">Projeto</th>
 					<th scope="col">Estudante</th>
-					<th scope="col">Token</th>
+					<th scope="col" hidden>Token</th>
 					<th scope="col">Acão</th>
 				</tr>
 			</thead>
@@ -29,7 +29,7 @@
 				<tr>
 					<td><%=tokens[i].projectName%></td>
 					<td><%=tokens[i].studentName%></td>
-					<td ><%=tokens[i].token%></td>
+					<td hidden><%=tokens[i].token%></td>
 					<td> <a href="/deliveryWork?token=<%=tokens[i].token%>">Entregar</a></td>
 				</tr>
 				<%}%>

@@ -29,10 +29,11 @@
 		<form ref='uploadForm'  id='uploadForm' action="/deliveryWork" method="post" encType="multipart/form-data">
 			<div class="form-group">
 				<div class="md-form">
-					<textarea name="token" id="token" class="md-textarea form-control" rows="3" required><%=token%></textarea>
-					<label for="form7">Informe o token: O token de entrega é uma chave que sua orientadora lhe passapar entregar o trabalho de seu projeto</label>
+					<textarea name="token" id="token" class="md-textarea form-control" rows="3" hidden required><%=token%></textarea>
+					<label for="form7" hidden>Informe o token: O token de entrega é uma chave que sua orientadora lhe passapar entregar o trabalho de seu projeto</label>
 				</div>
-
+				
+				<p>Informe o zip file do seu trabalho</p>
 				<div class="custom-file">
 					<input name="fileInput" type="file" class="custom-file-input" id="fileInput" required>
 					<label class="custom-file-label" for="validatedCustomFile">Selecione o arquivo...</label>
