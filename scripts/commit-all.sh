@@ -3,7 +3,7 @@ find ./data-works/ -name '*.zip' -exec sh -c 'unzip -d `dirname {}` {}' ';'
 find ./data-works/ -name "*.zip" -exec rm -rf {} \;
 echo "Looking dis folders"
 HOME="$(pwd)"
-for line in $(find ./data-works -name dist); do 
+for line in $(find ./data-works/t04 -name dist); do 
   echo "Adjusting dist folder: $line"
   cd "$line"
   mv * ../../
