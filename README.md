@@ -1,5 +1,7 @@
 # homework-delivery
 
+![Alt text](./project-view.png?raw=true "View")
+
 ## What is this project?
 
 This project is a way of students delivery homeworks as zip file to a central folder.
