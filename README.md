@@ -18,11 +18,13 @@ The ideia is that each student have a token to delivered a specific project, the
 
 - Clone the source
 - Install the project using `npm install`
+- Install sqlite3 https://www.sqlite.org/index.html
 - Few the file to register the students `app/config/insert-students.sql`
+- Run script `./scripts/create-db.sh`
 - Boot the project `node index.js >> homework-delivery.log &`
 - Generate the tokens to the students using the URL to `<URL>/generateToken`
 - View the active Tokens on `<URL>/viewTokens`
-- Copy the student Tokens with the respectives projects and pass by e-mail or somthing else.
+- Copy the student Tokens with the respectives projects and pass by e-mail or something else.
 - The student with this token can delivery using the `<URL>/deliveryWork`
 
 # TODO
