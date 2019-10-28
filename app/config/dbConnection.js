@@ -1,5 +1,6 @@
 const sqlite3 = require('sqlite3').verbose();
 const fs = require('fs')
+const Promise = require('bluebird')
 
 const DB_PATH = 'app/db/upload-hmw.db'
 //let db = new sqlite3.Database(':memory:');
@@ -14,6 +15,22 @@ function createConnection() {
     });
 }
 
+function migrate(dataFile) {
+    fs.readFile(dataFile, 'utf8', function(err, dbSchema) {
+        if (err) throw err;
+        DB.exec(dbSchema, function(err){
+            if (err) {
+                console.log(err)
+            }
+        });
+    });
+}
+
+
 let DB = createConnection()
+
+
+migrate('app/migrations/001-initial.sql')
+migrate('app/migrations/002-insert-students.sql')
 
 module.exports = DB;
