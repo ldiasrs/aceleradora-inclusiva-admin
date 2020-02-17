@@ -56,6 +56,28 @@ module.exports = {
         });
     },
 
+    findCurrentClassWithAllProjectsAndStudants : function(callback) {
+        var sql = ""
+            + "SELECT "
+            + "       st.studentName AS studentName, "
+            + "       st.studentPath AS studentPath, "
+            + "       pj.projectName AS projectName, "
+            + "       pj.projectPath AS projectPath, "
+            + "       pj.projectDescription AS projectDescription, "
+            + "       pj.picturePath AS picturePath, "
+            + "       cls.className AS className ",
+            + "       cls.className AS classPath "
+            + "FROM   ClassInfo cls "
+            + "       INNER JOIN Student st "
+            + "               ON st.classId = cls.id AND cls.current=1"
+            + "       LEF JOIN Project pj "
+            + "WHERE  pj.active = 1 ";
+
+        DB.get(sql, (err, rows) => {
+            callback(err, rows)
+        });
+    },
+
     findStandentAndProjectNameByToken : function (token, callback) {
         var sql = ""
             + "SELECT "

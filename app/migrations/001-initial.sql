@@ -4,30 +4,24 @@ PRAGMA foreign_keys = ON;
 CREATE TABLE IF NOT EXISTS ClassInfo (
    id integer NOT NULL PRIMARY KEY,
    className text,
+   classPath text,
    current boolean,
    createdDate date
 );
 
-INSERT OR REPLACE INTO ClassInfo(className,current,createdDate) 
-   VALUES('t04',1, datetime('now'));
-
-
 CREATE TABLE IF NOT EXISTS Project (
    id integer NOT NULL PRIMARY KEY,
    active boolean,
-   projectName text
+   projectName text,
+   projectPath text,
+   projectDescription text,
+   picturePath text
 );
-
-INSERT OR REPLACE INTO Project(projectName,active) 
-   VALUES('Quem_sou_eu', 1);
-INSERT OR REPLACE INTO Project(projectName,active) 
-   VALUES('Zine', 1);
-INSERT OR REPLACE INTO Project(projectName,active) 
-   VALUES('Form', 1);
 
 CREATE TABLE IF NOT EXISTS Student (
    id integer NOT NULL PRIMARY KEY,
    studentName text,
+   studentPath text,
    admissionDate date,
    classId integer,
    FOREIGN KEY (classId) REFERENCES ClassInfo(id)
@@ -47,9 +41,20 @@ CREATE TABLE IF NOT EXISTS DeliveriedProject (
    token integer
 );
 
-INSERT OR REPLACE INTO Student(studentName, admissionDate, classId) 
-   VALUES('Leo', datetime('now'), (SELECT MAX(id) FROM ClassInfo));
-INSERT OR REPLACE INTO Student(studentName, admissionDate, classId) 
-   VALUES('Fernando', datetime('now'), (SELECT MAX(id) FROM ClassInfo));
+INSERT OR REPLACE INTO ClassInfo(className,classPath,current,createdDate) 
+   VALUES('Turma 04', 't04', 1, datetime('now'));
+
+   projectPath text,
+INSERT OR REPLACE INTO Project(projectName,projectPath,projectDescription,picturePath, active) 
+   VALUES('Quem sou eu', 'Quem_sou_eu', 'Descricao quem_sou_eu', 'images/lapis.jpg', 1);
+INSERT OR REPLACE INTO Project(projectName,projectPath,projectDescription,picturePath, active) 
+   VALUES('Zine', 'Zine', 'Descricao Zine', 'images/lapis.jpg', 1);
+INSERT OR REPLACE INTO Project(projectName,projectPath,projectDescription,picturePath, active) 
+   VALUES('Form', 'Form', 'Descricao Form', 'images/lapis.jpg', 1);
+
+INSERT OR REPLACE INTO Student(studentName, studentPath, admissionDate, classId) 
+   VALUES('Leo', 'leo',datetime('now'), (SELECT MAX(id) FROM ClassInfo));
+INSERT OR REPLACE INTO Student(studentName, studentPath, admissionDate, classId) 
+   VALUES('Fernando', 'fernando', datetime('now'), (SELECT MAX(id) FROM ClassInfo));
 
 COMMIT;

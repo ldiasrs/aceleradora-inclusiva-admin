@@ -6,6 +6,7 @@ jest.mock('./FileStorage', () => ({
 
 describe('Delivery project', () => {
      let token = "1123";
+     
     it('returns the correct data', () => {
         jest.mock('./Repository', () => ({
             tokenExist: (token, callback) => { callback(null, true) },

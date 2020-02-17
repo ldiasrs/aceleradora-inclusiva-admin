@@ -2,7 +2,6 @@ var fs = require('fs');
 
 const dataWorkDir = 'data-works';
 
-
 function createIfNotExist(dir) {
     if (!fs.existsSync(dir)) {
         console.log(`FileUploader - Creating folder: ${dir}`)
