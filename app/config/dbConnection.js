@@ -10,7 +10,7 @@ function createConnection() {
             console.log(`Error on connecting to DB: ${err}`)
             return
         }
-        console.log(`Connected to ' + ${DB_PATH} + ' database.`)
+        console.log(`Connected to '${DB_PATH}' database.`)
 
     });
 }

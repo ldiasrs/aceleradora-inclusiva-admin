@@ -41,10 +41,9 @@ CREATE TABLE IF NOT EXISTS DeliveriedProject (
    token integer
 );
 
-INSERT OR REPLACE INTO ClassInfo(className,classPath,current,createdDate) 
-   VALUES('Turma 04', 't04', 1, datetime('now'));
+INSERT OR REPLACE INTO ClassInfo(className, classPath,current,createdDate) 
+   VALUES('Turma 05', 't05', 1, datetime('now'));
 
-   projectPath text,
 INSERT OR REPLACE INTO Project(projectName,projectPath,projectDescription,picturePath, active) 
    VALUES('Quem sou eu', 'Quem_sou_eu', 'Descricao quem_sou_eu', 'images/lapis.jpg', 1);
 INSERT OR REPLACE INTO Project(projectName,projectPath,projectDescription,picturePath, active) 

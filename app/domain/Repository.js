@@ -65,15 +65,19 @@ module.exports = {
             + "       pj.projectPath AS projectPath, "
             + "       pj.projectDescription AS projectDescription, "
             + "       pj.picturePath AS picturePath, "
-            + "       cls.className AS className ",
-            + "       cls.className AS classPath "
+            + "       cls.className AS className, "
+            + "       cls.classPath AS classPath  "
             + "FROM   ClassInfo cls "
             + "       INNER JOIN Student st "
             + "               ON st.classId = cls.id AND cls.current=1"
-            + "       LEF JOIN Project pj "
+            + "       LEFT JOIN Project pj "
             + "WHERE  pj.active = 1 ";
 
-        DB.get(sql, (err, rows) => {
+        DB.all(sql, (err, rows) => {
+            if (err) {
+                console.log(`Error findCurrentClassWithAllProjectsAndStudants, ERROR: ${err}`)
+                return
+            }
             callback(err, rows)
         });
     },
