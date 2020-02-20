@@ -5,8 +5,7 @@
 O projeto aceleradora inclusiva admin tem o objetivo de gerenciar as informações referente ao show case das alunas, tais como:
 
 - Gerenciar a entrega dos trabalhos (organizando por pastas e nomes)
-- Gerenciar as novas alunas
-- Gerenciar os novos projetos envolvidos no programa
+- Gerenciar as novas turmas e projetos envolvidos no programa
 
 ## Fazendo o setup do projeto
 
@@ -16,6 +15,7 @@ O projeto aceleradora inclusiva admin tem o objetivo de gerenciar as informaçõ
 - Preencher os arquivos de estudantes `app/config/insert-students.sql`
 - Rodar o script script `./scripts/create-db.sh`
 - Iniciar o projeto: `node index.js >> aclr-inclusiva-admin.log &`
+- Acessar http://localhost:8080/entregas
 
 # Tech stack
 
