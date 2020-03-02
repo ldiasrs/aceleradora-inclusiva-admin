@@ -1,6 +1,7 @@
 
 BEGIN TRANSACTION;
 PRAGMA foreign_keys = ON;
+
 CREATE TABLE IF NOT EXISTS ClassInfo (
    id integer NOT NULL PRIMARY KEY,
    className text,
@@ -11,49 +12,37 @@ CREATE TABLE IF NOT EXISTS ClassInfo (
 
 CREATE TABLE IF NOT EXISTS Project (
    id integer NOT NULL PRIMARY KEY,
-   active boolean,
+   classId integer,
    projectName text,
    projectPath text,
    projectDescription text,
-   picturePath text
-);
-
-CREATE TABLE IF NOT EXISTS Student (
-   id integer NOT NULL PRIMARY KEY,
-   studentName text,
-   studentPath text,
-   admissionDate date,
-   classId integer,
+   picturePath text,
+   active  boolean default 1,
    FOREIGN KEY (classId) REFERENCES ClassInfo(id)
-);
-
-CREATE TABLE IF NOT EXISTS ProjectDeliveryToken (
-   id integer NOT NULL PRIMARY KEY,
-   studentId integer,
-   projectId integer,
-   createdDate date,
-   token text
 );
 
 CREATE TABLE IF NOT EXISTS DeliveriedProject (
    id integer NOT NULL PRIMARY KEY,
    createdDate date,
-   token integer
+   deliveredName text,
+   deliveredPath text,
+   projectId integer,
+   FOREIGN KEY (projectId) REFERENCES Project(id)
 );
 
 INSERT OR REPLACE INTO ClassInfo(className, classPath,current,createdDate) 
    VALUES('Turma 05', 't05', 1, datetime('now'));
 
-INSERT OR REPLACE INTO Project(projectName,projectPath,projectDescription,picturePath, active) 
-   VALUES('Quem sou eu', 'Quem_sou_eu', 'Descricao quem_sou_eu', 'images/lapis.jpg', 1);
-INSERT OR REPLACE INTO Project(projectName,projectPath,projectDescription,picturePath, active) 
-   VALUES('Zine', 'Zine', 'Descricao Zine', 'images/lapis.jpg', 1);
-INSERT OR REPLACE INTO Project(projectName,projectPath,projectDescription,picturePath, active) 
-   VALUES('Form', 'Form', 'Descricao Form', 'images/lapis.jpg', 1);
+INSERT OR REPLACE INTO Project(projectName,projectPath,projectDescription,picturePath, classId) 
+   VALUES('Quem sou eu', 'Quem_sou_eu', 'Descricao quem_sou_eu', 'images/lapis.jpg', (SELECT MAX(id) FROM ClassInfo));
+INSERT OR REPLACE INTO Project(projectName,projectPath,projectDescription,picturePath, classId) 
+   VALUES('Zine', 'Zine', 'Descricao Zine', 'images/lapis.jpg', (SELECT MAX(id) FROM ClassInfo));
+INSERT OR REPLACE INTO Project(projectName,projectPath,projectDescription,picturePath, classId) 
+   VALUES('Form', 'Form', 'Descricao Form', 'images/lapis.jpg', (SELECT MAX(id) FROM ClassInfo));
 
-INSERT OR REPLACE INTO Student(studentName, studentPath, admissionDate, classId) 
-   VALUES('Leo', 'leo',datetime('now'), (SELECT MAX(id) FROM ClassInfo));
-INSERT OR REPLACE INTO Student(studentName, studentPath, admissionDate, classId) 
-   VALUES('Fernando', 'fernando', datetime('now'), (SELECT MAX(id) FROM ClassInfo));
+INSERT OR REPLACE INTO DeliveriedProject(deliveredName, deliveredPath, createdDate, projectId) 
+   VALUES('Leo', 'leo', datetime('now'), (SELECT MAX(id) FROM Project));
+INSERT OR REPLACE INTO DeliveriedProject(deliveredName, deliveredPath, createdDate, projectId) 
+   VALUES('Fernando', 'fernando', datetime('now'), (SELECT MAX(id) FROM Project));
 
 COMMIT;
