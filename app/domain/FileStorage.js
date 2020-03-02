@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-const dataWorkDir = 'data-works';
+const dataWorkDir = '../aceleradora-inclusiva-showcase-web/public/pages';
 
 function createIfNotExist(dir) {
     if (!fs.existsSync(dir)) {
@@ -9,7 +9,7 @@ function createIfNotExist(dir) {
     }
 }
 
-storeFile = function (token, studentName, className, projectName, file) {
+storeFile = function (studentName, className, projectName, file) {
 
     var classDir = `${dataWorkDir}/${className}`
     var projectDir = `${classDir}/${projectName}`

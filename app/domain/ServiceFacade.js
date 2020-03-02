@@ -7,7 +7,7 @@ module.exports = {
         callback({
             errorMsg: null,
             successMsg: null,
-            turmaCorrente: currentClass.className,
+            turmaCorrente: currentClass.classPath,
             projects: projects
         });
       });
@@ -15,12 +15,15 @@ module.exports = {
   },
 
   deliveryProject: function(
-    projectId,
+    className,
+    project,
     deliveryName,
-    fileName,
+    file,
     callback
   ) {
     const deliveryProject = require("./DeliveryProject");
+    deliveryProject.deliveryProject(className, project, deliveryName, file);
+    //TODO implementar integracao com a entrega
     const Repository = require("./Repository");
     console.log(`/getDeliveryProjectInfo`);
     Repository.findAllActiveProjects(function(error, projects) {

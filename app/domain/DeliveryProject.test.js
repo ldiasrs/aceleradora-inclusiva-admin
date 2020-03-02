@@ -2,39 +2,18 @@
 jest.mock('./FileStorage', () => ({
     storeFile: jest.fn()
 }));
-
+const mockStoreFile = require('./FileStorage');
 
 describe('Delivery project', () => {
      let token = "1123";
      
     it('returns the correct data', () => {
-        jest.mock('./Repository', () => ({
-            tokenExist: (token, callback) => { callback(null, true) },
-            findStandentAndProjectNameByToken: (token, callback) => { callback(null, { studentName: "Leo", className: "t04", projectName: "Token" }) },
-            markTokenAsDelivered: jest.fn(),
-        }));
 
         let DeliveryProject = require('./DeliveryProject');
+    
+        DeliveryProject.deliveryProject("Class-001", "Project-001", "My Delivery Name", null);
 
-        DeliveryProject.deliveryProject(token, null, function (row) {
-            expect(row).toStrictEqual({ tokenExist: true, studentName: "Leo", projectName: "Token" });
-        });
-    });
-    it('call the mark token as delivered', () => {
-        let Repository = require('./Repository');
-        expect(Repository.markTokenAsDelivered).toBeCalledWith(token);
-    });
-
-    it('return false when not foud token', () => {
-        jest.resetModules()
-        jest.mock('./Repository', () => ({
-            tokenExist: (token, callback) => { callback(null, false) }
-        }));
-        
-        let DeliveryProject = require('./DeliveryProject');
-
-        DeliveryProject.deliveryProject(token, token, function (row) {
-            expect(row).toStrictEqual({ tokenExist: false });
-        });
+        expect(mockStoreFile.storeFile).toHaveBeenCalledWith("My Delivery Name", "Class-001", "Project-001", null);
     });
 });
+ 

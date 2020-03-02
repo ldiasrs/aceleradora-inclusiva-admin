@@ -8,12 +8,13 @@
 		crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<title>Entrega de trabalho por Token</title>
+	<title><%=turmaCorrente%> - entrega</title>
 </head>
 
 <body>
 	<div class="container">
-		<h1><%=turmaCorrente%> - nova entrega</h1>
+	
+		<h1><%=turmaCorrente%> - entrega</h1>
 		<%if (errorMsg){%>
 			<div class="alert alert-danger" role="alert">
 				<%=errorMsg%>
@@ -27,12 +28,13 @@
 		<%}%>
 
 		<form ref='uploadForm'  id='uploadForm' action="/entregar" method="post" encType="multipart/form-data">
+			<input type="hidden" name="turmaCorrente" value=<%= turmaCorrente %>>
 			<div class="form-group">
 				<div class="form-group">
 					<p>Escolha o projeto que está entregando</p>
 					<select name="project" id="Projects" class="form-control" >
 						<%for ( var i = 0; i < projects.length; i++ ){%>
-						<option value="<%=projects[i].id%>" > <%=projects[i].projectName%> </option>
+						<option value="<%=projects[i].projectName%>" > <%=projects[i].projectName%> </option>
 						<%}%>
 					</select>
 				</div>

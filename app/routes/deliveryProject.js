@@ -12,9 +12,10 @@ module.exports = function(app) {
       `/POST-deliveryProject - NomeEntrega: " + ${req.body.nomeEntrega}, Projeto ID: ${req.body.project} Zip File:  ${req.files.fileInput.name}`
     );
     ServiceFacade.deliveryProject(
+      req.body.turmaCorrente,
       req.body.project,
       req.body.nomeEntrega,
-      req.files.fileInput.name,
+      req.files.fileInput,
       function(deliveriedRes) {
         res.render("deliveryProject", deliveriedRes);
       }
