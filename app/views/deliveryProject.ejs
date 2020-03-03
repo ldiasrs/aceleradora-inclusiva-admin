@@ -28,13 +28,13 @@
 		<%}%>
 
 		<form ref='uploadForm'  id='uploadForm' action="/entregar" method="post" encType="multipart/form-data">
-			<input type="hidden" name="turmaCorrente" value=<%= turmaCorrente %>>
+			<input type="hidden" name="turmaCorrente" value=<%=turmaCorrente %>>
 			<div class="form-group">
 				<div class="form-group">
 					<p>Escolha o projeto que está entregando</p>
 					<select name="project" id="Projects" class="form-control" >
 						<%for ( var i = 0; i < projects.length; i++ ){%>
-						<option value="<%=projects[i].projectName%>" > <%=projects[i].projectName%> </option>
+						<option value="<%=projects[i].projectPath%>" > <%=projects[i].projectName%> </option>
 						<%}%>
 					</select>
 				</div>

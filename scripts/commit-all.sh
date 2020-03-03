@@ -1,20 +1,6 @@
-echo "Unziping files and removinf zip files"
-find ./data-works/ -name '*.zip' -exec sh -c 'unzip -d `dirname {}` {}' ';'
-find ./data-works/ -name "*.zip" -exec rm -rf {} \;
-echo "Looking dis folders"
-HOME="$(pwd)"
-for line in $(find ./data-works/t04 -name dist); do 
-  echo "Adjusting dist folder: $line"
-  cd "$line"
-  mv * ../../
-  cd ../
-  RM_DIR="$(pwd)"
-  cd ..
-  echo "Removing $RM_DIR"
-  rm -rf "$RM_DIR"
-  cd "$HOME"
-done
-cd data-works/
+echo "Commiting all files"
+ROOT_SHOW_CASE_PATH='../aceleradora-inclusiva-showcase-web
+cd $CURRENT_CLASS_PATH
 git add .
 git commit -m "Auto commit"
 git push
