@@ -1,4 +1,4 @@
-CURRENT_CLASS_PATH='../aceleradora-inclusiva-showcase-web/public/pages/t05'
+
 HOME="$(pwd)"
 
 echo "Unziping files and removinf zip files on:"$CURRENT_CLASS_PATH

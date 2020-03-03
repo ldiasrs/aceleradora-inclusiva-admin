@@ -1,5 +1,4 @@
 #!/bin/bash
-rm -rf app/db
-cd app
-mkdir db
-sqlite3 db/upload-hmw.db < ./migrations/001-initial.sql
+rm -rf $ACELERADORA_ADM_DB_NAME
+sqlite3 $ACELERADORA_ADM_DB_NAME < ./app/migrations/001-initial.sql
+sqlite3 $ACELERADORA_ADM_DB_NAME < ./app/migrations/002-insert-students.sql
