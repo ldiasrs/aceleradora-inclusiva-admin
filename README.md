@@ -9,6 +9,7 @@
 
 ## Setup do projeto
 
+- Instalar o nodeJS(SE VOCÊ AINDA NÃO TIVER INSTALADO)  `brew install node`(no MAC) ou seguir link https://nodejs.org/
 - Clonar o repositório show case ADM `git clone https://github.com/ldiasrs/aceleradora-inclusiva-admin.git`
 - Clonar o repositório show case WEB `git clone https://github.com/ldiasrs/aceleradora-inclusiva-showcase-web.git`
 - Os projetos devem ficar na mesma pasta Exemplo:
