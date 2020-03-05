@@ -2,10 +2,14 @@
 
 ## O que é o projeto?
 
-O projeto aceleradora inclusiva admin tem o objetivo de gerenciar as informações referente ao show case das alunas, tais como:
+1) Publicar os trabalhos das estudantes o quanto antes para que elas possam ver e divulgar
 
-- Gerenciar a entrega dos trabalhos (organizando por pastas e nomes)
-- Gerenciar as novas turmas e projetos envolvidos no programa
+2) Otimizar o tempo e processo das colaboradoras que públicam os trabalhos.
+
+![Image of Yaktocat](./Aceleradora-ADM.png)
+
+## O que é o projeto?
+
 
 ## Fazendo o setup do projeto
 
