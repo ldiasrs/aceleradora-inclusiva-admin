@@ -1,11 +1,11 @@
 # Aceleradora inclusiva admin
 ![Image of Yaktocat](./Aceleradora-ADM.png)
 
-## Objetivo projeto?
+## Objetivo do projeto?
 
-1) Possibilitar que as pessoas estutantes possame ver e divulgar seus trabalhos o quanto antes.
+1) Possibilitar que as pessoas estudantes possam ver e divulgar seus trabalhos o quanto antes.
 
-2) Otimizar o tempo das pessoas colaboradoras que públicam os trabalhos automatizando o processo de entrega e manutenção.
+2) Otimizar o tempo das pessoas colaboradoras que publicam os trabalhos, automatizando o processo de entrega e manutenção.
 
 ## Setup do projeto
 
@@ -16,7 +16,8 @@
   machine$% ls 
   aceleradora-inclusiva-admin/        aceleradora-inclusiva-showcase-web/                
   ```
-- Instalar o sqlite3 seguindo esse link https://www.sqlite.org/index.html
+
+- Instalar o sqlite3  `brew install sqlite3`(no MAC) ou seguir esse link: https://www.sqlite.org/index.html
 - Entrar na pasta do projeto ADM: `cd aceleradora-inclusiva-admin`
 - Instalar o projeto ADM: `npm install`
 - Configurar o banco de dados: `npm run dbcreate`
