@@ -25,7 +25,12 @@
  - Logs ficaram em: `aceleradora-admin.log`
 - Para fazer entregas acessar http://localhost:8080/entregas
 - Depois das entregas feitas você pode normalizar os arquivos com o comando `npm run unzipfolders`
-- Após normalizado os arquivos
+- Após normalizado os arquivos podemos o commit pode ser feito com um PR no projeto show case web
+- Entrar na pasta do projeto ADM: `cd ../aceleradora-inclusiva-showcase-web`
+- Criar um branch `git pull && git checkout -b turma-x-trabalhos-2020-03-05`
+- Commitar e fazer o push das alterações `git add . && git commit -m "Novos trabalhos turma x && git push"`
+- Criar o PR no projeto web nesse link https://github.com/ldiasrs/aceleradora-inclusiva-showcase-web/pulls
+
 
 # Tech stack
 
