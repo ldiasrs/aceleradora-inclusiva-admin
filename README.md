@@ -1,12 +1,11 @@
 # Aceleradora inclusiva admin
+![Image of Yaktocat](./Aceleradora-ADM.png)
 
 ## O que é o projeto?
 
 1) Publicar os trabalhos das estudantes o quanto antes para que elas possam ver e divulgar
 
 2) Otimizar o tempo e processo das colaboradoras que públicam os trabalhos.
-
-![Image of Yaktocat](./Aceleradora-ADM.png)
 
 ## Setup do projeto
 
