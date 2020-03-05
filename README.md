@@ -1,11 +1,11 @@
 # Aceleradora inclusiva admin
 ![Image of Yaktocat](./Aceleradora-ADM.png)
 
-## O que é o projeto?
+## Objetivo projeto?
 
-1) Publicar os trabalhos das estudantes o quanto antes para que elas possam ver e divulgar
+1) Possibilitar que as pessoas estutantes possame ver e divulgar seus trabalhos o quanto antes.
 
-2) Otimizar o tempo e processo das colaboradoras que públicam os trabalhos.
+2) Otimizar o tempo das pessoas colaboradoras que públicam os trabalhos automatizando o processo de entrega e manutenção.
 
 ## Setup do projeto
 

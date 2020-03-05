@@ -3,7 +3,7 @@ const fs = require('fs')
 const Promise = require('bluebird')
 
 const DB_PATH = process.env.ACELERADORA_ADM_DB_NAME;
-//let db = new sqlite3.Database(':memory:');
+//let db  = new sqlite3.Database(':memory:');
 function createConnection() {
     return new sqlite3.Database(DB_PATH,  sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,  function (err) {
         if (err) {
@@ -27,7 +27,7 @@ function migrate(dataFile) {
     });
 }
 
-
+ 
 let DB = createConnection()
 
 module.exports = DB;
