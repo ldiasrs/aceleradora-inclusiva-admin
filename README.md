@@ -17,20 +17,19 @@
   machine$% ls 
   aceleradora-inclusiva-admin/        aceleradora-inclusiva-showcase-web/                
   ```
-- Instalar o sqlite3 https://www.sqlite.org/index.html
+- Instalar o sqlite3 seguindo esse link https://www.sqlite.org/index.html
 - Entrar na pasta do projeto ADM: `cd aceleradora-inclusiva-admin`
 - Instalar o projeto ADM: `npm install`
 - Configurar o banco de dados: `npm run dbcreate`
-- Iniciar aplicação: `npm start`
- - Logs ficaram em: `aceleradora-admin.log`
-- Para fazer entregas acessar http://localhost:8080/entregas
-- Depois das entregas feitas você pode normalizar os arquivos com o comando `npm run unzipfolders`
-- Após normalizado os arquivos podemos o commit pode ser feito com um PR no projeto show case web
-- Entrar na pasta do projeto ADM: `cd ../aceleradora-inclusiva-showcase-web`
+- Iniciar aplicação: `npm start` (logs ficaram em: `aceleradora-admin.log`)
+- Fazer o upload dos trabalhos acessando a URL: http://localhost:8080/entregas
+- Depois das entregas de trabalhos, você pode normalizar os arquivos com o comando `npm run unzipfolders`
+- Após normalizado os arquivos podemos criar o Pull Request para o projeto show case WEB, onde eles serão publicados.
+- Entrar na pasta do projeto WEB: `cd ../aceleradora-inclusiva-showcase-web`
 - Criar um branch `git pull && git checkout -b turma-x-trabalhos-2020-03-05`
-- Commitar e fazer o push das alterações `git add . && git commit -m "Novos trabalhos turma x && git push"`
-- Criar o PR no projeto web nesse link https://github.com/ldiasrs/aceleradora-inclusiva-showcase-web/pulls
-
+- Fazer o commit e push das alterações `git add . && git commit -m "Novos trabalhos turma x && git push"`
+- Criar o Pull Request com as alterações no projeto web nesse link https://github.com/ldiasrs/aceleradora-inclusiva-showcase-web/pulls
+- Falar com algum resposável para que o merge seja realizado e o projeto show case atualizado com as modificações.
 
 # Tech stack
 
