@@ -8,7 +8,7 @@
 
 ![Image of Yaktocat](./Aceleradora-ADM.png)
 
-## Fazendo o setup do projeto
+## Setup do projeto
 
 - Clonar o repositório show case ADM `git clone https://github.com/ldiasrs/aceleradora-inclusiva-admin.git`
 - Clonar o repositório show case WEB `git clone https://github.com/ldiasrs/aceleradora-inclusiva-showcase-web.git`
@@ -23,13 +23,19 @@
 - Configurar o banco de dados: `npm run dbcreate`
 - Iniciar aplicação: `npm start` (logs ficaram em: `aceleradora-admin.log`)
 - Fazer o upload dos trabalhos acessando a URL: http://localhost:8080/entregas
-- Depois das entregas de trabalhos, você pode normalizar os arquivos com o comando `npm run unzipfolders`
-- Após normalizado os arquivos podemos criar o Pull Request para o projeto show case WEB, onde eles serão publicados.
+
+## Como fazer o upload de trabalhos e publicação no Show Case WEB
+
+- Depois de feito as entregas de trabalhos, você pode normalizar os arquivos com o comando `npm run unzipfolders`
+- Agora vamos criar o Pull Request para o projeto Show Case WEB, onde os trabalhos serão publicados.
 - Entrar na pasta do projeto WEB: `cd ../aceleradora-inclusiva-showcase-web`
 - Criar um branch `git pull && git checkout -b turma-x-trabalhos-2020-03-05`
 - Fazer o commit e push das alterações `git add . && git commit -m "Novos trabalhos turma x && git push"`
 - Criar o Pull Request com as alterações no projeto web nesse link https://github.com/ldiasrs/aceleradora-inclusiva-showcase-web/pulls
-- Falar com algum resposável para que o merge seja realizado e o projeto show case atualizado com as modificações.
+- Falar com alguma pessoa resposável para que o PR seja aprovado e o projeto show case possa ser atualizado com os novos trabalhos.
+
+## Como cadastrar novas turmas e alunas e publicar no Show Case WEB
+<Em construção>
 
 # Tech stack
 
