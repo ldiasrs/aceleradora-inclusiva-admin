@@ -8,18 +8,24 @@
 
 ![Image of Yaktocat](./Aceleradora-ADM.png)
 
-## O que é o projeto?
-
-
 ## Fazendo o setup do projeto
 
-- Clonar o repositório
-- Instalar o projeto: `npm install`
+- Clonar o repositório show case ADM `git clone https://github.com/ldiasrs/aceleradora-inclusiva-admin.git`
+- Clonar o repositório show case WEB `git clone https://github.com/ldiasrs/aceleradora-inclusiva-showcase-web.git`
+- Os projetos devem ficar na mesma pasta Exemplo:
+  ```
+  machine$% ls 
+  aceleradora-inclusiva-admin/        aceleradora-inclusiva-showcase-web/                
+  ```
 - Instalar o sqlite3 https://www.sqlite.org/index.html
-- Preencher os arquivos de estudantes `app/config/insert-students.sql`
-- Rodar o script script `./scripts/create-db.sh`
-- Iniciar o projeto: `node index.js >> aclr-inclusiva-admin.log &`
-- Acessar http://localhost:8080/entregas
+- Entrar na pasta do projeto ADM: `cd aceleradora-inclusiva-admin`
+- Instalar o projeto ADM: `npm install`
+- Configurar o banco de dados: `npm run dbcreate`
+- Iniciar aplicação: `npm start`
+ - Logs ficaram em: `aceleradora-admin.log`
+- Para fazer entregas acessar http://localhost:8080/entregas
+- Depois das entregas feitas você pode normalizar os arquivos com o comando `npm run unzipfolders`
+- Após normalizado os arquivos
 
 # Tech stack
 
