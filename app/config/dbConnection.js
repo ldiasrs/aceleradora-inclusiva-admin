@@ -11,6 +11,7 @@ function createConnection() {
             return
         }
         console.log(`Connected to '${DB_PATH}' database.`)
+        console.log(`URL para entregas: http://localhost:8080/entregar`)
 
     });
 }
@@ -27,7 +28,7 @@ function migrate(dataFile) {
     });
 }
 
- 
+
 let DB = createConnection()
 
 module.exports = DB;

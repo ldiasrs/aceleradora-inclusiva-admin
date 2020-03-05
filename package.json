@@ -10,7 +10,7 @@
     "test": "jest",
     "dbcreate": "env ACELERADORA_ADM_DB_NAME=database.db ./scripts/create-db.sh",
     "unzipfolders": "CURRENT_CLASS_PATH='../aceleradora-inclusiva-showcase-web/public/pages/t05' ./scripts/unzip-and-normalize.sh",
-    "start": "env ACELERADORA_ADM_DB_NAME=database.db node index.js >> aceleradora-admin.log &",
+    "start": "env ACELERADORA_ADM_DB_NAME=database.db node index.js",
     "stop": "pkill -f node"
   },
   "author": "Leonardo Cardoso Dias",

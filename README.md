@@ -21,8 +21,9 @@
 - Entrar na pasta do projeto ADM: `cd aceleradora-inclusiva-admin`
 - Instalar o projeto ADM: `npm install`
 - Configurar o banco de dados: `npm run dbcreate`
-- Iniciar aplicação: `npm start` (logs ficaram em: `aceleradora-admin.log`)
-- Fazer o upload dos trabalhos acessando a URL: http://localhost:8080/entregas
+- Iniciar aplicação: `npm start`
+- Fazer o upload dos trabalhos acessando a URL: http://localhost:8080/entregar
+- Para PARAR a aplicação: `npm stop`
 
 ## Como fazer o upload de trabalhos e publicação no Show Case WEB
 
