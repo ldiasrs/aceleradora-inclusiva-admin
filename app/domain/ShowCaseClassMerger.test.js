@@ -68,8 +68,8 @@ describe("Merge Classes, Projects and Studants", () => {
 
   it("read the ADMIN current class with projects and studants", () => {
     jest.mock("./Repository", () => ({
-      findCurrentClassWithAllProjectsAndStudants: callback => {
-        callback([
+      findCurrentClassWithAllProjectsAndStudants: callback => {null,
+        callback(null, [
           {
           className: "Turma 0",
           classPath: "turma-0",

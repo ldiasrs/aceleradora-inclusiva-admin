@@ -40,19 +40,18 @@ module.exports = {
     findCurrentClassWithAllProjectsAndStudants: function (callback) {
         var sql = "" +
             "SELECT " +
-            "       st.studentName AS studentName, " +
-            "       st.studentPath AS studentPath, " +
+            "       st.deliveredName AS studentName, " +
+            "       st.deliveredPath AS studentPath, " +
             "       pj.projectName AS projectName, " +
             "       pj.projectPath AS projectPath, " +
             "       pj.projectDescription AS projectDescription, " +
             "       pj.picturePath AS picturePath, " +
             "       cls.className AS className, " +
             "       cls.classPath AS classPath  " +
-            "FROM   ClassInfo cls " +
-            "       INNER JOIN Student st " +
-            "               ON st.classId = cls.id AND cls.current=1" +
-            "       LEFT JOIN Project pj " +
-            "WHERE  pj.active = 1 ";
+            "FROM   DeliveriedProject st " +
+            "       INNER JOIN Project pj ON st.projectId = pj.id " +
+            "       LEFT JOIN ClassInfo cls "
+            "WHERE  pj.active = 1  AND cls.current=1";
 
         DB.all(sql, (err, rows) => {
             if (err) {
