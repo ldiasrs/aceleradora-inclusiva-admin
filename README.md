@@ -37,7 +37,7 @@
 - Falar com alguma pessoa resposável para que o PR seja aprovado e o projeto show case possa ser atualizado com os novos trabalhos.
 
 ## Fluxo de funcionalidades
-![Image of Yaktocat](./funcionalidades.png)
+![Image of Yaktocat](./Aceleradora-admin-funcionalidades.png)
 
 # Tech stack
 
