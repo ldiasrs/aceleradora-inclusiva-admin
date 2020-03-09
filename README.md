@@ -37,7 +37,7 @@
 - Falar com alguma pessoa resposável para que o PR seja aprovado e o projeto show case possa ser atualizado com os novos trabalhos.
 
 ## Como cadastrar novas turmas e alunas e publicar no Show Case WEB
-<Em construção>
+![Image of Yaktocat](./funcionalidades.png)
 
 # Tech stack
 
