@@ -1,14 +1,21 @@
 const DB = require("../config/dbConnection")
 module.exports = {
 
-    findCurrentClass : function (callback) {
+    saveDeliveryProject: function (deliveredName, deliveredPath, projectPath) {
+        let sql = "INSERT INTO DeliveriedProject(createdDate,deliveredName,deliveredPath,projectId) VALUES(datetime('now'),?,?, (SELECT id FROM Project WHERE projectPath=?))"
+        var stmt = DB.prepare(sql);
+        stmt.run([deliveredName, deliveredPath, projectPath]);
+        stmt.finalize();
+    },
+
+    findCurrentClass: function (callback) {
         let sql = "SELECT * FROM ClassInfo WHERE current=1"
         DB.get(sql, (err, row) => {
             callback(err, row)
         });
     },
 
-    findAllActiveProjects : function (callback) {
+    findAllActiveProjects: function (callback) {
         let sql = "SELECT * FROM Project WHERE active=1"
         DB.all(sql, (err, rows) => {
             if (err) {
@@ -19,7 +26,7 @@ module.exports = {
         });
     },
 
-    findAllStudandsOfClass : function (classId, callback) {
+    findAllStudandsOfClass: function (classId, callback) {
         let sql = "SELECT * FROM Student WHERE classId=?"
         DB.all(sql, [classId], (err, rows) => {
             if (err) {
@@ -30,22 +37,22 @@ module.exports = {
         });
     },
 
-    findCurrentClassWithAllProjectsAndStudants : function(callback) {
-        var sql = ""
-            + "SELECT "
-            + "       st.studentName AS studentName, "
-            + "       st.studentPath AS studentPath, "
-            + "       pj.projectName AS projectName, "
-            + "       pj.projectPath AS projectPath, "
-            + "       pj.projectDescription AS projectDescription, "
-            + "       pj.picturePath AS picturePath, "
-            + "       cls.className AS className, "
-            + "       cls.classPath AS classPath  "
-            + "FROM   ClassInfo cls "
-            + "       INNER JOIN Student st "
-            + "               ON st.classId = cls.id AND cls.current=1"
-            + "       LEFT JOIN Project pj "
-            + "WHERE  pj.active = 1 ";
+    findCurrentClassWithAllProjectsAndStudants: function (callback) {
+        var sql = "" +
+            "SELECT " +
+            "       st.studentName AS studentName, " +
+            "       st.studentPath AS studentPath, " +
+            "       pj.projectName AS projectName, " +
+            "       pj.projectPath AS projectPath, " +
+            "       pj.projectDescription AS projectDescription, " +
+            "       pj.picturePath AS picturePath, " +
+            "       cls.className AS className, " +
+            "       cls.classPath AS classPath  " +
+            "FROM   ClassInfo cls " +
+            "       INNER JOIN Student st " +
+            "               ON st.classId = cls.id AND cls.current=1" +
+            "       LEFT JOIN Project pj " +
+            "WHERE  pj.active = 1 ";
 
         DB.all(sql, (err, rows) => {
             if (err) {
