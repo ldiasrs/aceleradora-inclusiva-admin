@@ -50,8 +50,7 @@ module.exports = {
             "       cls.classPath AS classPath  " +
             "FROM   DeliveriedProject st " +
             "       INNER JOIN Project pj ON st.projectId = pj.id " +
-            "       LEFT JOIN ClassInfo cls "
-            "WHERE  pj.active = 1  AND cls.current=1";
+            "       INNER JOIN ClassInfo cls ON cls.current=1";
 
         DB.all(sql, (err, rows) => {
             if (err) {

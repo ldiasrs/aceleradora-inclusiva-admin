@@ -23,7 +23,6 @@ module.exports = {
   ) {
     const deliveryProject = require("./DeliveryProject");
     deliveryProject.deliveryProject(className, project, deliveryName, file);
-    //TODO implementar integracao com a entrega
     const Repository = require("./Repository");
     console.log(`/getDeliveryProjectInfo`);
     Repository.findAllActiveProjects(function(error, projects) {
@@ -31,7 +30,7 @@ module.exports = {
         callback({
             errorMsg: null,
             successMsg: `"${deliveryName}" entregue com sucesso \o/`,
-            turmaCorrente: currentClass.className,
+            turmaCorrente: currentClass.classPath,
             projects: projects
         });
       });

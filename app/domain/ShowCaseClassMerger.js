@@ -4,15 +4,14 @@ merge = function(callback) {
         mergedClass = JSON.stringify(mergeClass(showCaseBaseClasses, currentAdmClass));
         const fs = require("fs");
         const finaString = JSON.stringify(JSON.parse(mergedClass), null, 4);
-        fs.writeFileSync("../data-works/aceleradora-inclusiva-showcase-web/src/pages.json", finaString);
+        fs.writeFileSync("../aceleradora-inclusiva-showcase-web/src/pages.json", finaString);
         callback(mergedClass)
-        console.log( finaString)
     })
 }
 
 readCurrentClassOfAdmin = function(callback) {
   require("./Repository").findCurrentClassWithAllProjectsAndStudants(function(err, rows) {
-    console.log("ROWS: " + rows)
+    //console.log("ROWS: " + JSON.stringify(rows))
     var currentClass = {
       name: rows[0].className,
       path: rows[0].classPath,

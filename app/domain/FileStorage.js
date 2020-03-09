@@ -9,7 +9,7 @@ function createIfNotExist(dir) {
     }
 }
 
-storeFile = function (studentName, className, projectName, file) {
+storeFile = function (studentName, className, projectName, file, callback) {
 
     var classDir = `${dataWorkDir}/${className}`
     var projectDir = `${classDir}/${projectName}`
@@ -24,8 +24,8 @@ storeFile = function (studentName, className, projectName, file) {
     file.mv(`${studentDir}/${file.name}`, function (err) {
         if (err) {
             console.log(`FileUploader - Error moving file ${file.name} to dir ${studentDir}. Error: ${err}`)
-            return res.status(500).send(err);;
         }
+        callback(`${studentDir}/${file.name}`)
     });
 };
 

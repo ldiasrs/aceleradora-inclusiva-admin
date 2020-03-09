@@ -17,7 +17,7 @@ describe('Delivery project', () => {
     
         DeliveryProject.deliveryProject("Class-001", "Project-001", "My Delivery Name", null);
 
-        expect(mockStoreFile.storeFile).toHaveBeenCalledWith("my_delivery_name", "Class-001", "Project-001", null);
+        expect(mockStoreFile.storeFile).toHaveBeenCalledWith("my_delivery_name", "Class-001", "Project-001", null, expect.any(Function));
     });
     it('saves delivery project with right parameters', () => {
 
