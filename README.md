@@ -36,7 +36,7 @@
 - Criar o Pull Request com as alterações no projeto web nesse link https://github.com/ldiasrs/aceleradora-inclusiva-showcase-web/pulls
 - Falar com alguma pessoa resposável para que o PR seja aprovado e o projeto show case possa ser atualizado com os novos trabalhos.
 
-## Como cadastrar novas turmas e alunas e publicar no Show Case WEB
+## Fluxo de funcionalidades
 ![Image of Yaktocat](./funcionalidades.png)
 
 # Tech stack
